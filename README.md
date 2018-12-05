@@ -75,8 +75,8 @@ __Default:__ `"ftp://127.0.0.1:21"`
 #### `pasv_url`
 The hostname to provide a client when attempting a passive connection (`PASV`). This defaults to the provided `url` hostname.
 
-_Note:_ If set to `0.0.0.0`, this will automatically resolve to the external IP of the box.  
-__Default:__ `"127.0.0.1"`
+_Note:_ If set to `0.0.0.0` as `resolve_hostname` is true, this will automatically resolve to the external IP of the box.  
+__Default:__ Hostname of provided `url`, eg: if `url` = `ftp://127.0.0.1:21`, then `pasv_url` = `127.0.0.1`
 
 #### `pasv_min`
 Tne starting port to accept passive connections.  
@@ -86,6 +86,10 @@ __Default:__ `1024`
 The ending port to accept passive connections.  
 The range is then queried for an available port to use when required.  
 __Default:__ `65535`
+
+#### `resolve_hostname`
+If true, will resolve the `url` and `pasv_url` to the external IP of the host if either are set to `0.0.0.0`.  
+__Default:__ `true`
 
 #### `greeting`
 A human readable array of lines or string to send when a client connects.  
