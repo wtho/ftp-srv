@@ -38,6 +38,13 @@ class FtpConnection extends EventEmitter {
       if (this.connector) this.connector.end();
       if (this.commandSocket && !this.commandSocket.destroyed) this.commandSocket.destroy();
       this.removeAllListeners();
+      this.emit('close');
+    });
+    this.commandSocket.on('end', () => {
+      if (this.connector) this.connector.end();
+      if (this.commandSocket && !this.commandSocket.destroyed) this.commandSocket.destroy();
+      this.removeAllListeners();
+      this.emit('close');
     });
   }
 
